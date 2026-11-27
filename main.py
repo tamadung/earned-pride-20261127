@@ -23,6 +23,10 @@ def main() -> None:
         os.makedirs("out", exist_ok=True)
         with open("out/entry.txt", "w", encoding="utf-8") as f:
             f.write(LINE)
+        output_path = "out/entry.txt"
+    # Round-trip check: the file the judge reads must be exactly the line.
+    with open(output_path, encoding="utf-8") as f:
+        assert f.read() == LINE, "written entry differs from LINE"
 
 
 if __name__ == "__main__":
